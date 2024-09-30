@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tabList.innerHTML = ""; // Clear any previous results
 
             tabs.forEach(function (tab) {
-                if (tab.url.toLowerCase().includes(searchQueryInput)) { // If tab URL matches the search query
+                if (tab.url.toLowerCase().includes(tabQueryInput)) { // If tab URL matches the search query
                     const listItem = document.createElement("li"); // Create a list item
                     listItem.innerText = `${tab.title} = ${tab.url}`;
 
