@@ -1,21 +1,23 @@
+import moveToTab from "./helper/moveToTab.js";
+
 document.addEventListener("DOMContentLoaded", function () { 
     const searchBtn = document.getElementById("searchBtn");
-    const tabQueryInput = document.getElementById("tabQuery");
+    const tabQuery = document.getElementById("tabQuery");
     const tabList = document.getElementById("tab-list");
 
     searchBtn.addEventListener("click", function () {
-        const searchQuery = tabQueryInput.value.toLowerCase(); 
+        const tabQueryInput = tabQuery.value.toLowerCase(); 
 
         chrome.tabs.query({}, function (tabs) {
             tabList.innerHTML = ""; // Clear any previous results
 
             tabs.forEach(function (tab) {
-                if (tab.url.toLowerCase().includes(searchQuery)) { // If tab URL matches the search query
+                if (tab.url.toLowerCase().includes(searchQueryInput)) { // If tab URL matches the search query
                     const listItem = document.createElement("li"); // Create a list item
                     listItem.innerText = `${tab.title} = ${tab.url}`;
 
                     listItem.addEventListener("click", function () { // Move to that tab when clicked
-                        chrome.tabs.update(tab.id, { active: true });
+                        moveToTab(tab.id);
                     });
 
                     tabList.appendChild(listItem); // Append the list item to list
@@ -24,15 +26,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-// chrome.tabs.query({}, (tabs) => {
-//     const tabsList = document.createElement('ul');
-  
-//     for (let tab of tabs) {
-//       const listItem = document.createElement('li');
-//       listItem.innerText = tab.title;
-//       tabsList.append(listItem);
-//     }
-  
-//     document.body.append(tabsList);
-//   });

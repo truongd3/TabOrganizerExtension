@@ -9,7 +9,8 @@
 Status: ✅
 
 ## Phase 2: Find tab by prompt
-- Gemini API
+- Use Gemini API
+- Search tab by prompt
 
 Status: 
 
