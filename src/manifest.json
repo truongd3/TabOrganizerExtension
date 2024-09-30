@@ -3,9 +3,19 @@
   "version": "1.0",
   "name": "Tab Organizer Extension",
   "description": "Search through and organize your open tabs.",
-  "author": ["Truong Dang", "Thai Nguyen"],
+  "author": ["Truong Dang", "Thai Nguyen", "Thanh Truc"],
   "permissions": ["tabs"],
+  "icons": {
+    "16": "assets/logo.png",
+    "48": "assets/logo.png",
+    "128": "assets/logo.png"
+  },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon.png",
+      "48": "assets/icon.png",
+      "128": "assets/logo.png"
+    }
   }
 }
