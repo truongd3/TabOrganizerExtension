@@ -9,6 +9,23 @@ input {
     margin-bottom: 10px;
 }
 
+input[type="button"] {
+    background-color: #1977d3;
+    color: white;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+input[type="button"]:hover {
+    background-color: #1565c0;
+}
+
+input[type="text"] {
+    width: 200px;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -19,7 +36,11 @@ li {
     border-bottom: 1px solid #ddd;
     cursor: pointer;
 }
-
 li:hover {
     background-color: #f0f0f0;
+}
+
+h1 {
+    color: #4285f4;
+    text-align: center;
 }
