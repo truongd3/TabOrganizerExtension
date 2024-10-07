@@ -6,10 +6,13 @@
 </head>
 <body>
     <h1>Tab Organizer Extension</h1>
-    <input type="text" id="tabQuery" placeholder="Search Tab" />
-    <input type="button" id="searchBtn" value="Search" />
+    <input type="text" id="tabQueryURL" placeholder="Search Tab by URL" />
+    <input type="button" id="searchBtnURL" value="Search" />
 
-    <ul id="tab-list"></ul>
+    <input type="text" id="tabQueryPrompt" placeholder="Search Tab by prompt" />
+    <input type="button" id="searchBtnPrompt" value="Search" />
+
+    <ul id="tabList"></ul>
 
     <script type="module" src="popup.js"></script>
 </body>
