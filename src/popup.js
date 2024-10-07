@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const tabQueryPrompt = document.getElementById("tabQueryPrompt");
     const searchBtnPrompt = document.getElementById("searchBtnPrompt");
     
-    searchBtnPrompt.addEventListener("click", async function () {
+    searchBtnPrompt.addEventListener("click", function () {
       const tabQueryPromptInput = tabQueryPrompt.value.toLowerCase();
   
       chrome.tabs.query({}, async function (tabs) {
