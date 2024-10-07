@@ -10,7 +10,7 @@ const postGeminiPrompt = async (prompt, tabs) => {
       {
         parts: [
           {
-            text: `Given a list of tab title ${tabs}. Pick titles and return their exact title without explaination that are relate to the prompt "${prompt}". If there is no match return "There is no match"`,
+            text: `Given the following array of objects where keys are tab titles and values are tab URLs: ${JSON.stringify(tabs)}, identify the titles and URLs that match or relevant to the query: "${prompt}". Return the title and URL of each matching object, separated by a comma, and each title and URL seperated by a character <>, without any additional explanation. If no matches are found, return a string being empty`,
           },
         ],
       },
@@ -27,14 +27,13 @@ const postGeminiPrompt = async (prompt, tabs) => {
       body: JSON.stringify(postData),
     });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
     const data = await response.json();
     const cleanedArray = data.candidates[0].content.parts[0].text
-      .split("\n")
-      .map((tab) => tab.trim().replace(/^- /, ""));
+      .split(",")
+      .map((tab) => {
+        const [key, value] = tab.split("<>").map(info => info.trim())
+        return {key, value};
+      });
     return cleanedArray;
   } catch (error) {
     console.error("Failed to fetch response:", error);

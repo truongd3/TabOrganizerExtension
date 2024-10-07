@@ -36,13 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
   
       chrome.tabs.query({}, async function (tabs) {
         tabList.innerHTML = ""; // Clear any previous results
-        const tabTitle = tabs.map((tab) => tab.title);
-        console.log(tabTitle)
+        const tabTitle = tabs.map((tab) => {return { [tab.title]: tab.url}});
         const predictedTab = await postGeminiPrompt(tabQueryPromptInput, tabTitle);
-        console.log(predictedTab);
         tabs.forEach(function (tab) {
-          if (predictedTab.includes(tab.title)) {
-            // If tab URL matches the search query
+          if (predictedTab.some(tabObj => tabObj.key === tab.title && tabObj.value === tab.url)) {
+            // If tab title and URL matches the search query
             const listItem = document.createElement("li"); // Create a list item
             listItem.innerText = `${tab.title}`;
   
