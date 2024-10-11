@@ -1,2 +1,5 @@
 # Ignore environment config file
 env_config.js
+
+node_modules
+node_modules/
