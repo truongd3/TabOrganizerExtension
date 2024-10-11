@@ -1,16 +1,13 @@
+const validURL = require("./validURL.js");
+
 // Shorten Facebook URL
 // @param {url} "...facebook.com..."
 // @returns {string} [facebook.com, facebook.com/abcxyz]
-export default function handleFacebookURL(url) {
-    try {
-        const validatedURL = new URL(url);
-    } catch (error) {
-        return null;
-    }
+function handleFacebookURL(url) {
+    if (!validURL(url)) return null;
 
     const regex = /^(?:https?:\/\/)?(?:www\.)?([^\/]+)(\/[^\/]*)?/;
     const match = url.match(regex);
-    console.log(match);
 
     if (!match) return null;
     const domain = match[1];
@@ -22,6 +19,4 @@ export default function handleFacebookURL(url) {
     else return domain;
 }
 
-console.log(handleFacebookURL("invalid-url"));
-console.log(handleFacebookURL("facebook.com/abc"))
-console.log(handleFacebookURL("facebook.com"))
+module.exports = handleFacebookURL;
