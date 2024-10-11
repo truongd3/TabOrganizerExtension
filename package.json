@@ -1,0 +1,22 @@
+{
+  "name": "taborganizerextension",
+  "version": "1.0.0",
+  "description": "Search through and organize your open tabs.",
+  "main": "src/popup.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "authors": [
+    "Truong Dang",
+    "Thai Nguyen",
+    "Thanh Truc"
+  ],
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
